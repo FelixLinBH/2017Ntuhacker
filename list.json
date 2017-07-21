@@ -1,0 +1,18 @@
+[
+	{
+		"AcctNbr": "3333333333333333",
+		"StatementDate": "1454256000000",
+		"TransactionAmt": "300.00",
+		"TransactionDate": "2017-01-14",
+		"TransactionDescChinese": "個人信用卡國內消費",
+		"TransactionPostingDate": "2017-01-14"
+	},
+	{
+		"AcctNbr": "3333333333333333",
+		"StatementDate": "1454256000000",
+		"TransactionAmt": "300.00",
+		"TransactionDate": "2017-01-14",
+		"TransactionDescChinese": "個人信用卡國內消費",
+		"TransactionPostingDate": "2017-01-14"
+	}
+]
