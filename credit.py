@@ -2,6 +2,7 @@ import requests
 import json
 from time import gmtime, strftime
 import hashlib
+import argparse
 
 class Card:
 	def __init__(self, CardNO, CreditInterestRate, AvailableCredit, CreditCardLimit):
@@ -76,30 +77,51 @@ class Account:
    	def writeNewBuyItem(self,item):
    		oldList = self.getBuyList()
 		oldList.append(item)
-		print(oldList)
+		# print(oldList)
 		self.writeBuyList(oldList)
 
 			
 		
 
 
+def main():
+	account = parse_args().account
+	pin = parse_args().pin
+	price = parse_args().price
+	note = parse_args().note
+	option = parse_args().option
+
+	account = Account(account,pin)
+	account.login()
+
+	if option == "1":
+		print(account.cardArray[0].AvailableCredit)
+	elif option == "2":
+		print(account.buySomething(account.cardArray[0].CardNO,price,note))
+	elif option == "3":
+		print(account.getBuyList())
+
+def parse_args():
+    parser = argparse.ArgumentParser(description='account')
+    parser.add_argument("-a", "--account", help="account", type=str, required=True) 
+    parser.add_argument("-p", "--pin", help="pin", type=str, required=True) 
+    # option 1 get credit
+    # option 2 buy something
+    # optino 3 see list
+    parser.add_argument("-o", "--option", help="option", type=str, required=True) 
+    parser.add_argument("-n", "--price", help="price", type=str, required=False) 
+    parser.add_argument("-t", "--note", help="note", type=str, required=False) 
+    args = parser.parse_args()
+    return args
 
 
-
-
-
-
-account = Account("B199443055","3055")
-account.login()
+# account = Account("B199443055","3055")
 # print(account.cardArray[0].AvailableCredit)
 # account.writeNewBuyItem()
 # account.login()
 # account.getCreditCard()
 # account.buySomething(account.cardArray[0].CardNO,'100.00','Under Armour')
-t = account.getBuyList()
-print(t)
-
-
-
+if __name__ == '__main__':
+	main()
 
 
